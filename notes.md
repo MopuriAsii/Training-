@@ -546,4 +546,156 @@ let stu_1="abc";  //✅
  *
  */
 ```
-fo js doc pres /** and tab then you will get comments.
+
+for js doc pres /\*\* and tab then you will get comments.
+autocomplete is advantage of js doc.
+
+# Agile Methodolgy:
+
+planning->assign tasks,story points.  
+in review the people check the code quality.
+
+# ESLint website:
+
+enforces code standard.
+Maintains code quality.
+
+cournel:
+interface between h/w and shell.
+
+# GIT:
+
+1. Git is used to maintain versions.
+2. Instead maintaining seperate folders it maintain all changes(commits) in one folder.
+
+## git init:
+
+git init create a git folder and it contains all git files.
+
+## git add . -> add all the files
+
+             or
+
+git add filename
+
+## $ git commit -m "start of my git fundamentals" -> add message
+
+# STEPS FOR GIT :
+
+-> git init  
+-> git add .  
+ -> git add ./hello.js ./fun.js  
+ -> git commit -m "Start of my git fundamentals"
+->git status
+whenever modifications are done then we need to type "git add ." and also write "git commit" command also.
+
+// git log -> shows the all actions performed by the user.
+
+// git checkout -> goes forward.
+
+//git checkout - -> comes back to the existing path
+
+//git checkout master ->goes to the paritcular master branch.
+
+//git checkout -b branchname ->creates and check the branch.
+
+//git log -1 -> shows the reacent commit
+
+//git log -2 -> shows the second commit
+
+// git log --author=ashi -1 -> displays al the commit details done by given author name
+
+//git log --help -> gives the display of all commands
+
+//git log -p(patch) ->defines the recent changes.
+
+//git log--graph ->displays line
+
+//git merge branch-name ->merges the branches
+
+111 git commit -m "Testing with console"  
+112 git status  
+113 git log  
+114 git aa  
+115 git cm "Git notes"  
+116 git log  
+117 git checkout 601253fb4d  
+118 git checkout -  
+119 git log  
+120 git d60b04b716  
+121 git checkout d60b04b716  
+122 git checkout 601253fb4d  
+123 git checkout -  
+124 git checkout -  
+125 git checkout -  
+126 git checkout master  
+127 git checkout 601253fb4d  
+128 git checkout master  
+129 git log -1  
+130 git log -2  
+131 git log --author=raga
+
+// git log -Ssum -> gives the information about the searching data
+
+// git log -Ssum -p ->filters the given commints.
+
+// git branch --all ->displays all branch names.
+
+![alt text](<Screenshot (20).png>)
+
+# GIT vs GITHUB:
+
+github is used to store files.It is a s/w
+git is used as a version control.can works offline.
+
+# Stages of git:
+
+1. Working stage
+2. staging stage:  
+   can comibine multiple files into one single commit.
+3. commit stage:  
+    when to commit:
+   1. Logical change
+   2. small commits
+   3. Multiple commits(backup)
+   4. Always commit when everything is working(code working)
+
+# Commit Messages:
+
+A message should define "what happened actually" and "how did it worked"
+and "why changes were done" and "why it was added".
+
+unstaging the change :git reset filename;  
+deleting the change: git checkout - .  
+git revert "commit id" -> for deleting changes.
+git reset --soft Head-1 ->used to edit the particular command  
+git reset --hard Head-1 -> used to create a command
+
+# VIM:
+
+h->left  
+j->down  
+k->up  
+l->right  
+w->forward  
+b->backward  
+dw->delete a word  
+u ->undo  
+d2w-> delete 2 words  
+verb+number+movement  
+diw->delete the word  
+dip->delete inside the paragraph  
+q!->forcefully quit  
+p->paste
+
+# Branches:
+
+1. Master -> customer
+2. Staging -> QA
+3. dev -> Developer
+
+![alt text](<Screenshot (23).png>)
+
+fast forward merging -> if we do not give any commit messages then it takes as fast forward merging.
+
+![alt text](<Screenshot (24).png>)
