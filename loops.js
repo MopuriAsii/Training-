@@ -1,14 +1,13 @@
-
 // const cart = [
 //     { name: "Apple" , price :0.5 , quantity: 4 },
 //     { name: "Banana" , price :0.25 , quantity: 6 },
-    
+
 // ];
 
 // const newItems = [
 //     { name: "Cherry" , price :0.75 , quantity: 5 },
 //     { name: "Date" , price :1 , quantity: 3 },
-    
+
 // ];
 
 // const hello = [...cart , ...newItems]
@@ -19,22 +18,17 @@
 // }
 // console.log(total);
 
-
-
 // const cart = [
 //          { name: "Apple" , price :0.5 , quantity: 4 },
 //          { name: "Banana" , price :0.25 , quantity: 6 },
-        
+
 //      ];
-    
+
 //      const newItems = [
 //          { name: "Cherry" , price :0.75 , quantity: 5 },
 //          { name: "Date" , price :1 , quantity: 3 },
-        
+
 //      ];
-
-
-
 
 // const hello = [...cart ,...newItems]
 // console.log(hello);
@@ -44,20 +38,15 @@
 // }
 // console.log(total);
 
-
-
-
 // for(let item of hello){
 //     const{price,quantity} = item;
 //     total+=price*quantity;
 // }
 
-
 // for(let item of allitems){
 //     let cost= item.price * item.quantity;
 //     total=total+cost;
 // }
-
 
 // const books = [
 //     {title:"Infinte Jest" , rating : 4.5 , genre:"fiction"},
@@ -81,8 +70,6 @@
 // }
 // }
 
-
-
 // const employes= [
 //     {id: 1, name: "alice", grade: 78},
 //     {id: 2, name: "bob", grade: 85},
@@ -98,13 +85,10 @@
 //     }
 //     console.log(j);
 
-
 // if()
 //     goodEMployee.push({
 // ...employee,status:"promotd",
 // });
-
-
 
 // const movies = [
 //     {title: "inception" , ratings : [5,4,5,4,5] },
@@ -113,7 +97,6 @@
 //     {title: "The Dark Knight" , ratings : [5,5,5,5,5] },
 //     {title: "Memento" , ratings : [4,5,4,5,4] },
 // ]
-
 
 // function getAvg(ratings){
 //     var sum=0;
@@ -137,4 +120,13 @@
 
 //     console.log(topRated.title);
 
+/**
+ *
+ * @param {*} x
+ * @returns
+ */
 
+function multiply(x) {
+  y = x.toUpperCase();
+  return y;
+}

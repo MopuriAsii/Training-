@@ -476,3 +476,74 @@ story point means how much time you are giving to complete the work.
 
 1. variable names and function names should be in camel case.
 2. camel case and pascal case.
+
+# CODING STANDARDS:
+
+are meant to have uniformity through out your code base.
+
+## variables name:
+
+1. understandable /Descriptive
+   ```js
+   int a= 50; //❌
+   int age= 50;✅
+   ```
+
+````
+camelCase
+
+```js
+let student_name = "abc";         //    ❌
+let studentName = "abc";          //    ✅
+````
+
+choose 'let' over 'var' , 'const' over 'let':
+
+```js
+let pan = "CDRT5678"; //❌
+const pan = "CD4357"; //✅
+const marks = [10, 20, 40]; //✅
+```
+
+write your const case:
+
+````js
+const piValue = 3.14; // ❌
+const PI_VALUE =3.14; //✅
+
+## Errors for variable names:
+
+1. Reserved keywords ('if','for')
+```js
+let if = 'abc'; //❌
+
+2. cannot start with numbers
+```js
+let 2cool ="abc"; //❌
+````
+
+3. connot have special symbols:
+
+```js
+let stu@1='abc';  // ❌
+let stu_1="abc";  //✅
+```
+
+# DOCUMENTATION:
+
+1. single comment:
+
+```js
+//
+```
+
+2. Multiple comment:
+
+```js
+/**
+ *
+ *
+ *
+ */
+```
+fo js doc pres /** and tab then you will get comments.
