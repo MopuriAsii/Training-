@@ -462,11 +462,17 @@ story point means how much time you are giving to complete the work.
 
 # SCRUM: implementation of agile process
 
-# KANBANN BOARD:
+# KANBANN BOARD:A Kanban board is a visual project management tool used to track and manage work in progress.
 
 ![alt text](<Screenshot (12).png>)
 
-# Burn down chart:
+# Burn down chart:A burn down chart is a visual representation of the progress of work completed against the projected rate of completion in a project, typically used in agile methodologies like Scrum.
+
+The horizontal axis represents time (usually in iterations or sprints).  
+The vertical axis represents the amount of work remaining (often measured in story points or tasks).  
+At the start of the project or iteration, the chart begins with a line that represents the total amount of work that needs to be completed.  
+As work progresses, the line "burns down" as tasks are completed and the remaining work decreases.  
+Ideally, the burn down line should meet or exceed the projected rate of completion, indicating that the team is on track to complete the work within the given time frame.
 
 ![alt text](<Screenshot 2024-06-03 142442.png>)
 
@@ -565,8 +571,10 @@ interface between h/w and shell.
 
 # GIT:
 
-1. Git is used to maintain versions.
-2. Instead maintaining seperate folders it maintain all changes(commits) in one folder.
+1. Linus Torvalds invented git.
+2. Git is used to maintain versions system.
+3. Instead maintaining seperate folders it maintain all changes(commits) in one folder.
+4. to manage linux, git is invented. to manage the source code of linux.
 
 ## git init:
 
@@ -613,6 +621,8 @@ whenever modifications are done then we need to type "git add ." and also write 
 
 //git merge branch-name ->merges the branches
 
+//$ git branch -D branchname -> delete branch name
+
 111 git commit -m "Testing with console"  
 112 git status  
 113 git log  
@@ -641,6 +651,8 @@ whenever modifications are done then we need to type "git add ." and also write 
 
 // git branch --all ->displays all branch names.
 
+// git bisect -> it is used to find the bugs by dividing into half
+
 ![alt text](<Screenshot (20).png>)
 
 # GIT vs GITHUB:
@@ -668,8 +680,8 @@ and "why changes were done" and "why it was added".
 unstaging the change :git reset filename;  
 deleting the change: git checkout - .  
 git revert "commit id" -> for deleting changes.
-git reset --soft Head-1 ->used to edit the particular command  
-git reset --hard Head-1 -> used to create a command
+git reset --soft Head~1 ->used to edit the particular command  
+git reset --hard Head~1 -> cannot be edited
 
 # VIM:
 
@@ -698,4 +710,602 @@ p->paste
 
 fast forward merging -> if we do not give any commit messages then it takes as fast forward merging.
 
+You have a branch, let's call it "feature," that you've been working on.  
+While you were working on the "feature" branch, no new commits were made to the branch you intend to merge into, typically the "master" branch.  
+When you merge the "feature" branch into "master," Git realizes that there's a direct path from the current commit of "master" to the commit you want to merge from "feature."  
+Instead of creating a new merge commit, Git simply moves the "master" branch pointer to point to the latest commit of "feature." This action is the fast-forward merge.
+
 ![alt text](<Screenshot (24).png>)
+
+MERGE COMMIT:
+
+You have two branches in your Git repository, let's call them "branch A" and "branch B."
+You decide to merge "branch B" into "branch A" using the git merge command.
+Git analyzes the histories of both branches to determine the common ancestor commit, i.e., the point where the branches diverged.
+Git then applies the changes made in "branch B" since the common ancestor commit onto "branch A."
+If there are no conflicts, Git automatically creates a new commit, known as the merge commit, that incorporates the changes from "branch B" into "branch A." This commit has two parent commits: one from "branch A" and one from "branch B," representing the history of both branches.
+
+In centeralized system , if one person changes the code then it will be reflected to all systems.
+
+In distributed system , there will be a backup.
+
+![alt text](<Screenshot (25).png>)
+
+# BEHIND:
+
+1. In Git, "behind" refers to the number of commits that are present on the main branch (usually master) but not on the current branch. This can occur when the main branch has new commits that have not been merged into the current branch. The "ahead" count, on the other hand, indicates the number of commits that are present on the current branch but not on the main branch.
+
+2. merge commit will be happened
+
+# AHEAD:
+
+1. In Git, "ahead" refers to the number of commits that are present on the current branch but not on the main branch. This count indicates how many commits the current branch has that are not yet merged into the main branch. The "ahead" count is typically displayed in the format "X commits ahead" when viewing a branch on GitHub or other Git platforms.
+
+2. fast forward merge will happen
+
+![alt text](<Screenshot (26).png>)
+
+# CREATING PULL REQUEST(PR)
+
+git push --set--upstream branchname -> to push in branch
+
+git pull -> whatever data is present in online will come to offline.
+
+1. PUSH
+2. Git hub (PULL)
+3. checkout branch (in terminal)
+4. PULL in terminal(master branch)
+
+# CREATING THE CONFLIT:
+
+1. from master branch create new branch
+2. do commit
+
+// git stash :whwn we want to store uncomplete code.
+
+//git stash apply ->to get back to the work
+
+They are not online.
+
+# GIT REBASE:
+
+combine commit together.  
+we will not perfeorm rebase on dev,master,satging branches.
+
+// git rebase -i HEAD~4 ->combine first 4
+//
+
+# git rebase :
+
+for keeping history in a straight line.
+
+When do we get merge conflict?  
+Steps for meging?
+How to merge online?
+->to review the code(to add reviewers)  
+->first commit the changes in dev branch.  
+->commit  
+->push the commits  
+->adding the discriptions
+
+//to improve the code quality we perform PR.
+
+# merges:
+
+1. fast forward merge
+2. merge commit
+
+## to avoid rebase:
+
+//git pull --rebase origin dev -> all the updates made in dev will come to feature.
+
+# TERMINOLOGIES:
+
+1. configuration management: system -> code
+   Configuration management is the practice of systematically managing the configurations of systems, software, hardware, and infrastructure throughout their lifecycle. It involves identifying, controlling, and tracking changes to configuration items (CIs) to ensure that they are accurate, complete, and consistent.
+
+2. Configuration item(CI) : deals with git and files in git (SOURCE CODE)
+   They represent any item that is managed as part of the configuration management process.
+
+3. Release management: related to Branching strategy(master, staging, dev)  
+   Release management is the process of planning, scheduling, coordinating, and controlling the deployment of software releases into production environments. It encompasses the activities and practices involved in delivering software products or updates from development and testing phases to end-users or customers.
+
+4. CI/CD:
+
+5. Audit : 1. commits frequently 2. git blame ->displays all the time when the code is modified.
+
+6. BASELINE(Savepoints) :
+
+   1. commits are used to act as a savepoints.
+
+   2. tags: versions
+
+7. Accounting:
+
+   1. git log : who did what(History)
+   2. git blame
+
+8. change mangement: changes done in the system  
+    how efficiently the system handels the change
+   1. branches
+   2. PR(PULL REQUESTS)
+
+![alt text](<Screenshot (29).png>)
+
+# benifits:
+
+1. Traceability -> tracking the changes.(git log)
+2. Quality and consistency.(PR)
+3. Reduces the risk of loosing of code & avoids errors.(backup,commits)
+4. change management is smooth.
+
+# RELEASE MANAGEMENT:
+
+1. planning
+
+   1. branching strategy
+
+2. Governance : maintains the system
+   taks about the access level for each branch
+
+3. Scheduling: maintaing the schedules
+
+   1. Sprints
+   2. Agile
+
+4. Automation : change ; no human errror
+
+   1. CI/CD
+   2. no human error
+
+5. contingency : backup plan
+
+   1. Rollback:going back to the older version
+
+   ![alt text](<Screenshot (30).png>)
+
+paas(provides envirnonment) -> render,netlfy ,railway,vercel
+
+release management = paas
+
+saas -> twitter.com ,netflix
+
+iaas -> aws , azure , GCP
+
+# CI/CD(continous integration/continous deployment):
+
+![alt text](<Screenshot (33).png>)
+
+![alt text](<Screenshot (35).png>)
+
+![alt text](<Screenshot (37).png>)
+
+index.html -> it is the 1 page that every browser request for.
+
+\***\*\*\*\*\*\*\***\*\***\*\*\*\*\*\*\***HTML**\*\***\*\***\*\***\*\*\***\*\***\*\***\*\***
+list->ordered, unordered , nested
+paragraph -> <p>
+target="\_blank" -> opens the link in new tab
+email and tel
+
+**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***CSS**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***
+
+# what is CSS?
+
+# types of css:
+
+1. Inline css:
+
+```html
+1.
+<li style="color: red">sleep</li>
+```
+
+2. keep it concise.
+3. External css :
+   1. create a separate file .It is written within the
+   ```html
+   <link rel="stylesheet" href="filename.css" />
+   ```
+   2. It is written within
+   ```html
+   <head></head>
+   ```
+   3. Do not put in `
+   ```html
+   <style>
+   ```
+   4. Reuseability
+4. Internal css :
+   for giving style to a single file.
+   reduces rendering time.
+   if size is small because it does not make html request
+
+   1. before
+
+   ```html
+   <body></body>
+   ```
+
+   which is given in
+
+   ```html
+   <style>
+   ```
+
+# CSS Terminology:
+
+![alt text](<Screenshot (38).png>)
+
+# TEXT STYLING:
+
+1. font-size
+2. font-weight:thickness of font
+3. font-style : italic
+4. color:  
+   can be represented by
+5. color name
+   5.5 color format:  
+   5.5.1. Hex value  
+   5.5.2 rgb representation  
+    r -> 0 to 255  
+    a-> 0 to 1
+   5.5.3. hsl(hue,staturation,lightness)->human friendly  
+   h->supports all s/w
+   5.5.4 lch:gammet is extended ; larger color gammet
+   SRGB,adobeSRGB,DCPI
+
+# TEXT STYLING-II:
+
+1. text-transform: changes letter case
+2. text-align
+3. text-decoration
+4. letter-spacing:
+5. line height:spaces between lines
+
+if font-size is high then line height is low:readability improves
+
+staging can be megrd by testers
+master by devops
+
+why do we ugligfy -> downloads faster(by reducing the size)  
+ removes the unused code(comments)  
+ slag,discord,teams
+
+serif -> edges will be there,used for traditional,professional , banks
+sans serif -> no edges,apps,twitter,new
+
+# BOX MODEL:
+
+{
+border: 5px solid pink; // add borders
+border-style:"dotted";  
+}
+
+margin ->outside of border
+border -> outside of padding
+padding -> first
+
+By default list comes with padding
+
+when we want give space btw 2 elements -> margin
+when we want to shrink inside -> padding
+
+border-radius: 16px; // to bend the border
+
+padding is a complex property
+border is a complex property
+
+1vh =1% of screen height
+1vw = 1% of screen width
+width = 1% of container width
+
+by default list has default padding.
+border,padding,margin will not get inherited
+text related will get inherited
+
+display(property)->displays the paragraph in line by line
+but display property is not present in anchor<a></a>tags so it will not display line by line
+
+differences btw inline and block elements
+all headings are block elements <div> is a block element
+<span> is an inline element
+
+\***\*\*\*\*\***\*\*\***\*\*\*\*\***\*\*\***\*\*\*\*\***\*\*\***\*\*\*\*\***SQL\***\*\*\*\*\*\*\***\*\*\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***\*\*\***\*\*\*\*\*\*\***
+
+# what is database?
+
+special s/w to store the data
+
+## can we keep db in laptop?
+
+no(sir answer)
+
+![alt text](<Screenshot (39).png>)
+
+Yes, you can store a database on a laptop. Many database management systems (DBMS) are designed to be installed and run on personal computers, including laptops. Popular database software such as MySQL, PostgreSQL, SQLite, and Microsoft SQL Server can all be installed on laptops for local development, testing, or even production use, depending on your needs. Storing a database on your laptop can be useful for small-scale projects, learning purposes, or when you need to work offline. Just ensure that your laptop has enough storage space and resources to handle the database workload you intend to run.
+
+## where does db lives?
+
+cloud
+
+## what is cloud?
+
+renting PC
+
+## cloud providers:
+
+1. aws
+2. Azure
+3. Google loud Platform
+4. IBM cloud
+5. Alibaba cloud
+6. Salesforce
+
+## why are u renting?
+
+1. because it costs more so it is better to rent(High initial cost)
+2. Rent rooms
+3. A/C
+4. Powerbill
+5. Maintenance(swaps hard disk or ram)
+6. spares
+7. Generator
+   ![alt text](<Screenshot (46).png>)
+
+### advantages of renting?
+
+1. Disaster management:  
+   food,eathquake -> disasters
+
+the place where the disasters caannot be possible
+
+2. Scaling:
+
+2.1 vertical scaling: increases the RAM or by upgrading the Processors.Adding powerful  
+2.2 Horizontal Scaling: adding more computers
+
+![alt text](<Screenshot (49).png>)
+
+2.3 AutoScale(Automatic Scaling):PAy as much as you use.
+
+Autoscaling in the context of databases involves automatically adjusting the capacity of the database system based on changes in workload or resource demand. This ensures that the database can efficiently handle varying levels of traffic without manual intervention.
+
+3. PC:
+
+## what os in cloud?
+
+linux(more servers runs using linux)
+
+why not windows? -> (licenses fee)
+
+Advantages of linux:
+
+1. free of cost
+2. Open-Source ->if there is abug then everybody is responsible to solve it.
+3. Secure
+4. Small footprint:the lesser RAM,storage the lesser cost it charges.
+5. Automation:managing anything from terminal
+
+Linux has many flavour which is called as distros(alpile 256MB(smaller in size))
+
+DDOS
+
+How DDOS attack work
+
+solution : is to divert the traffic to dummy websites.  
+can be identify using Region IP and also captcha true
+
+## DATABASE-why?
+
+It gives faster access by providing users a copy of accessed data from HHD to RAM(copies the data from HDD)
+
+## features of DB(special features):
+
+Reading spped becomes faster
+
+1. Database->Frequently asked it will save it in the RAM
+2. Querying becomes easier
+3. CRUD - easy
+4. Backups are inbuilt
+5. Undo-easily(time limit)
+6. Performance
+
+another advantage of renting -> disaster management(disaster prone areas)
+
+## SQL VS NO SQL:
+
+### examples of SQL and NO SQL:
+
+RELATIONAL DATABASES(SQL):
+
+PL/SQL
+PostgreSQL
+MYSQL
+amazon RDS
+
+NOn-RELATIONAL DB(NOSQL):
+
+mongoDB
+couchDB
+redis
+cassandra(netflix used this DB)
+Dynamo DB
+neo4j
+
+READ the SELECT QUERY
+
+### in:
+
+select \* from movies where year in (2001,2007,2010)
+
+= refers case sensitive(must match correctly)
+LIKE refers not case sensitive
+
+% = 0 or more
+
+Distint,orderBY,limit
+
+## problems for storing duplicate data:
+
+1. storage
+2. update anomali is avoided
+
+### primary key:
+
+1. not null
+2. unique value
+3. primary key must be one for the table
+
+### JOINS:
+
+before separation -> de normalization
+after separation -> normalization
+
+## NORMALIZATION:
+
+1. To incerease the safety of the data(by doing the normal forms)
+
+### rules for 1NF:
+
+![alt text](<Screenshot (69).png>)
+
+### composite key:
+
+### rules for 2NF:
+
+to avoid update anomalies
+
+1. non key attributes must be depends upon entire primary key or composite key
+2. there should be no relation between non key attributes
+
+## anamolies:
+
+1. update
+2. deletion
+3. insertion
+
+### rules for 3NF:
+
+there should not be any dependencies between non key attributes  
+these should be completely dependent upon the primary key
+
+### rules for BCNF:
+
+every attributes should be dependent upon the primary key
+
+# JOINS:
+
+for data safety we perform joins(i.e normalization) and when we want to fetch the data from 2 tables
+
+## INNER JOIN:
+
+it will get the common items in both the sets
+
+![alt text](<Screenshot (84).png>)
+![alt text](<Screenshot (85).png>)
+
+## OUTER JOIN:
+
+1. LEFT JOIN:
+   intersection items+left items
+   ![alt text](<Screenshot (86).png>)
+
+2. RIGHT JOIN:
+
+intersection items+right items
+
+![alt text](<Screenshot (88).png>)
+
+3. FULL JOIN:
+   intersection items+left items+right items
+
+![alt text](<Screenshot (89).png>)
+
+### A join B on PK=FK
+
+# AGGREGATION:
+
+aggregation means summerization.
+
+## functions of aggregation:
+
+![alt text](<Screenshot (90).png>)
+
+# GROUPBY:
+
+whenevere we want to drill down to the next level then we need groupby.
+
+if there is "every" then we need "GROUPBY"
+
+what we are grouping we need to use that grouping(column) in the select statement also
+
+# HAVING:
+
+The HAVING applied to the grouped rows.
+
+### ORDER of execution:
+
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+JOIN another_table
+ON mytable.column = another_table.column
+WHERE constraint_expression
+GROUP BY column
+HAVING constraint_expression
+ORDER BY column ASC/DESC
+LIMIT count OFFSET COUNT;
+
+# UPDATE:
+
+before doing update, first we have to select the statement
+
+# CREATING A NEW TABLE:
+
+If there already exists a table with the same name, the SQL implementation will usually throw an error, so to suppress the error and skip creating a table if one exists, you can use the IF NOT EXISTS clause.
+
+## DATATYPES:
+
+1. INTEGER
+2. BOOLEAN
+3. FLOAT
+4. DOUBLE
+5. REAL
+6. CHARACTER(num_chars),
+7. VARCHAR(num_chars),
+8. TEXT
+9. DATE
+10. DATETIME
+
+# DDL( Data Definition Language):
+
+1. CREATE Command
+2. DROP Command:The DROP command is used to remove the whole database or table indexes, data, and more.
+3. ALTER Command
+4. TRUNCATE Command:The TRUNCATE command is used to remove all the rows from the table.
+5. RENAME Command
+
+# DML( Data Manipulation Language):
+
+1. SELECT Command
+2. INSERT Command
+3. UPDATE Command
+4. DELETE Command
+
+# TCL( Transaction control language):
+
+1. COMMIT
+2. ROLLBACK
+3. SAVEPOINT
+
+# Alter:
+
+## Altering table to add new column(s):
+
+ALTER TABLE mytable
+ADD column DataType OptionalTableConstraint
+DEFAULT default_value;
+
+# DROP:
+
+in sql if we use GROUP BY then we have to use aggregate function
