@@ -1268,14 +1268,53 @@ If there already exists a table with the same name, the SQL implementation will 
 
 1. INTEGER
 2. BOOLEAN
-3. FLOAT
-4. DOUBLE
-5. REAL
-6. CHARACTER(num_chars),
-7. VARCHAR(num_chars),
-8. TEXT
-9. DATE
-10. DATETIME
+3. FLOAT:stores upto 3 precision points
+4. DOUBLE: stores upto 6 precision points
+5. REAL:stores upto 12 precision points
+6. CHARACTER(num_chars):stores few characters(eg. gender)
+7. VARCHAR(num_chars):stores few sentences(eg. twitter tweets fixed length)
+8. TEXT:stores large amount of data(eg. paragraphs)
+9. DATE:stores only date
+10. DATETIME:stores date and time
+11. BLOB:stores binary data,images,videos
+
+## sql server DATATYPES:
+
+1.  integer:
+    1.1 int(-2B,2B)
+    1.2 smallint(-32k , 32k)
+    1.3 bigint(-9*10^8,9*10^8)
+
+2.  String:
+    2.1 varchar:it stores 2 unicode for 1 letter
+    it will give you maximum space
+    2.2 nvarchar:it stores 1 unicode for 1 letter
+    it will give you maximum space
+    supports multiple languages
+
+3.  Decimal:
+    3.1 decimal: gives exact value
+    less performance
+    3.2 float : gives approx value
+    loose decimal points
+    gives better performance
+
+4.  Boolean: it stores in the bit form
+
+## constraints:
+
+constraints validate whether our data is good or not
+
+1. PRIMARY KEY: unique value(eg.phno,pan no)
+2. AUTOINCREMENT:whenever we mark a column as autoincrement it will automatically incremented
+3. UNIQUE:
+4. NOT NULL:
+5. Check(expression):performs validation(eg age checking before voting and driving)
+6. FORIEGN KEY:
+   6.1 deleting: first we have to delete the data in foreign key and then we have to delete the data in primary key table.
+   6.2 insertion: first we have to insert in primary key table and the we have to insert in foreign key table.
+
+![alt text](<Screenshot (93).png>)
 
 # DDL( Data Definition Language):
 
@@ -1309,3 +1348,111 @@ DEFAULT default_value;
 # DROP:
 
 in sql if we use GROUP BY then we have to use aggregate function
+
+## databse commands:
+
+create database db_name
+use db_name;
+
+# FUUNCTIONS:
+
+1. Agg functions
+2. string functions:  
+   1.len
+   2.left
+   3.Right
+   4.subString:we cannot give negative values.  
+    string values strats with 1
+   5.Upper
+   6.Lower
+   7.Ltrim
+   8.Rtrim
+   9.CharIndex:it will return the position of the word
+   it will return 0 if htere is no word
+   10.Replace
+   11.concat
+   12.Replace
+   13.Replicate
+   14.Reverse
+
+select len('ashi') as NameLength;// returns length
+
+select Left('ashi',2);// returns characters from left side of string
+
+select right('ashi',2);// returns characters from right side of string
+
+select SUBSTRING('ashritha',2,5);// returns the substring
+
+select UPPER('ashi');//converts to uppercase
+
+select lower('ASHI');//converts to lower case
+
+select Ltrim(' ashritha mopuri');// removes spaces from left side
+
+select Rtrim('ashritha mopuri ');// removes spaces from right side
+
+select Rtrim('ashritha ','tha ');
+
+select Rtrim('ashritha','tha');
+
+select CHARINDEX('i','ashritha');//return character position
+
+select REPLACE('ashritha','a','b');// replace the string
+
+select CONCAT('ashritha','mopuri');// concates two strings
+
+select REPLICATE('ashi',5);// repeats the string no of times
+
+select REVERSE('ashi');
+
+![alt text](<Screenshot (97).png>)
+![alt text](<Screenshot (98).png>)
+
+3. mathametical functions:
+   1. Abs: returns positive value if negative value is given
+   2. Power
+   3. Round
+   4. Ceiling
+   5. Floor
+
+select ABS(-343);// return negative value to positive value
+
+select POWER(2,3);//return the number
+
+select ROUND(38.525,2);// return the rounded number
+
+select CEILING(38.325);// return next number
+
+select FLOOR(38.325);// return previous number
+
+![alt text](<Screenshot 2024-06-13 124922.png>)
+
+4. DATE FUNCTIONS:
+   1. GetDate
+   2. DateAdd
+   3. DateDiff
+   4. Format
+   5. DatePart: extracts part of the date
+
+select DATEPART(month , GETDATE());
+
+select DATEPART(DAY, GETDATE());
+
+select GETDATE()
+
+select DATEADD(day , 10 ,GETDATE());
+
+select DATEDIFF(day,'2024-01-01','2024-06-13');
+
+select DATEDIFF(day,'2024-01-01',getdate());
+
+select DATEDIFF(month,'2024-01-01',getdate());
+
+select format(getdate(),'dd/MM/yyyy');
+
+select format(getdate(),'dd/MMM/yyyy');
+
+![alt text](<Screenshot 2024-06-13 130554.png>)
+S![alt text](<Screenshot 2024-06-13 130619.png>)
+
+5. format functions
