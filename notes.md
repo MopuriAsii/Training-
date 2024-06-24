@@ -1037,7 +1037,7 @@ renting PC
 
 1. aws
 2. Azure
-3. Google loud Platform
+3. Google cloud Platform
 4. IBM cloud
 5. Alibaba cloud
 6. Salesforce
@@ -1082,7 +1082,7 @@ why not windows? -> (licenses fee)
 Advantages of linux:
 
 1. free of cost
-2. Open-Source ->if there is abug then everybody is responsible to solve it.
+2. Open-Source ->if there is a bug then everybody is responsible to solve it.
 3. Secure
 4. Small footprint:the lesser RAM,storage the lesser cost it charges.
 5. Automation:managing anything from terminal
@@ -1292,6 +1292,8 @@ If there already exists a table with the same name, the SQL implementation will 
     it will give you maximum space
     supports multiple languages
 
+    instead of tex datatype we need to use(varchar(max),nvarchar(max))
+
 3.  Decimal:
     3.1 decimal: gives exact value
     less performance
@@ -1362,7 +1364,7 @@ use db_name;
    2.left
    3.Right
    4.subString:we cannot give negative values.  
-    string values strats with 1
+    string values starts with 1
    5.Upper
    6.Lower
    7.Ltrim
@@ -1455,4 +1457,287 @@ select format(getdate(),'dd/MMM/yyyy');
 ![alt text](<Screenshot 2024-06-13 130554.png>)
 S![alt text](<Screenshot 2024-06-13 130619.png>)
 
-5. format functions
+5. format functions:
+
+   1. cast
+   2. convert
+
+# nested sub queries
+
+# co-related sub queries
+
+# operators:
+
+1. All:
+
+2. Any
+3. Exists
+
+# GROUPING SETS:
+
+# roll up and cube:
+
+## roll up:
+
+roll up group by 1 column
+
+if we have n columns then we get (n+1) combinations
+
+n->columns
+
+## cube:
+
+cube give all the possible combinations
+
+if we have n columns then we get 2^n combinations
+
+![alt text](<Screenshot (130).png>)
+
+n->columns
+
+# ranking functions:
+
+1. rank
+2. Dense_Rank
+3. Row_Number
+
+# ERD
+
+1.provides the visual representation 2. bring same platform 3. non-technical people can easily understand
+
+TransactionID | Date | ProductName | Category | Price | StoreName | City | Country | |---------------|------------|-------------|-----------|-------|-----------|------------|---------| | 1 | 2024-04-01 | Laptop | Electronics | 1200 | TechWorld | San Francisco | USA | | 2 | 2024-04-01 | Smartphone | Electronics | 800 | TechWorld | San Francisco | USA | | 3 | 2024-04-02 | Jeans | Apparel | 40 | FashionFiesta | New York | USA |
+
+**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***XML\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
+
+xml auto:add attributes
+select \* from table_name for XML AUTO
+
+xml path:we get keys. nesting can be done (/)
+select \* from table_name for XML Path
+
+select movieid,titlt,yesr,directorId from movies for xml
+
+select movieid,titlt,yesr,directorId from movies for xml path ('movie'), root
+
+select movieid,titlt,yesr,directorId from movies for xml path ('movie'), root('movies')
+
+# custom validation:
+
+"check" is the custom constraint
+
+## why constrainsta should be given name?
+
+1. if we want to update or delete the constraint it will be helpful
+
+2. to debug easily
+
+# JSON:
+
+older version of json is xml
+
+![alt text](<Screenshot (150).png>)
+
+in json there is no atrribute
+
+in json auto:
+
+in json path:nesting can be done using (.)
+
+## keys:
+
+DATABASE KEYS
+
+1. Primary key
+2. Foreign key
+3. Candidate key => columns that are eligible to become primary key
+4. ALternate key => The keys that are eligible to become primary key other than primary key
+5. Alternate Key = Candidate key - primary key
+6. Composite key
+7. Super key => group of single or multiple keys which indentifies rows in a table.
+8. In super key each column is a primary key
+9. in composite key combination of columns is a primary key
+10. Super Key => Primary Key , Candidate Key , Alternate Key
+
+candidate key has unique values eligible to become pk (alternate+pk)
+
+alternate key=ck-pk
+
+super key=
+
+## cross join:
+
+in natural join, no need to mention "on" condition.the column names must be same in both tables
+
+in equi join,condition should be mentioned, condition should be always "="
+
+in inner join , we can use >,< conditions
+
+in self join, we combine to itself
+
+## cast and convert:
+
+in cast first we give the value which we convert and second part will be the type we want to convert.
+
+select cast(42.6 as int);
+
+in convert first we will give the type we want to convert and second part will be the value we give
+
+styling code
+
+select convert(int,26.64);
+
+# functions:
+
+1. custom function gives u single value
+2. can take parameters
+
+## syntax:
+
+create function dbo.CalculateAge(@ReleaseDate Int)
+Returns Int  
+as
+Begin
+
+        Return year(getdate())  @ReleaseDate;
+
+End;
+
+## declaring a variable:
+
+Declare @movie_id Int;  
+set @movie_id = 3;
+
+there is no primary key we keep composite key
+
+super key each columns are primary key
+
+# views:
+
+1. creates a virtual view but does not create a new table shows the existing table.
+2. copy by refernces
+3. complex statement - create view - easily readability
+4. abstraction: hides the unwanted data(complex)
+5. security-hides the data
+6. whenever we create view we use "vw" before viewname
+7. views cannot take parameters
+
+itvf/mtvf  
+inline table valued function
+
+scalar function:returns int,date  
+table valued function:
+m
+
+## scalar function:
+
+scalar functions will be useful in the place of "column names".
+
+## inline tvf:
+
+create function dbo.GetMOvieByGenre(@genre varchar(30))  
+return table  
+as  
+return {  
+select \* from movies where genere= @genre('action')  
+}
+
+select \* from dbo.getmovieByGenre('action')
+
+## mtvf:
+
+create function dbo.GetMOviesAfter2015()  
+returns @LatestDecadeMovies Table(title varchar (50),releaseyear int,genre varchar(20))  
+as  
+begin  
+insert into @LatestDecadeMovies  
+select title,releaseyear,genre from movies where ReleaseYear>2015
+
+return;
+end
+
+no need to pass the values
+
+# CASE:
+
+select \*,
+case  
+when ReleaseYear >= 2020 then 'latest'  
+when ReleaseYear >= 2010 then 'old'  
+end as category  
+from movies;
+
+# STORED PROCEDURES:
+
+in fuction we cannot access the the tables which are not mentioned  
+in stored procedures we can access all the tables
+
+declare @orderAmount decimal(10,2)
+
+if @orderAmount > 1000  
+Begin  
+print 'applying 10% discount'  
+end  
+else  
+begin  
+print 'no discount'  
+end
+
+---
+
+declare @counter int =10
+
+while @counter > 0  
+begin  
+print @counter  
+set @counter=@counter-1;  
+end
+
+---
+
+## creating procedures:
+
+create Procedure spGetMoviesByGenre  
+@Genre nvarchar(20)  
+as  
+Begin  
+select \* from movies  
+where Genre=@Genre;  
+end
+
+execute spGetMoviesByGenre 'Action'  
+exec spGetMoviesByGenre 'Action'
+
+exec sp_helptext GetMoviesByGenre -> descripbes the structure
+
+# MONGOdB:
+
+1.  GOOD AT READING AND RETRIVAL
+2.  slow at insertion
+3.  Retrival fast
+
+## indexing in sql:
+
+it does the grouping(i.e.,spliting the data).  
+we have cluster index in our db by default.  
+cluster index are the table which are in ordered.
+
+in any db, we will have reading speed inversly proportional to insertion
+to increase the reading spped we need to tune it by indexing.
+
+Exec sp_helpindex employess
+
+clustered :
+
+1. (pk)
+2. (decides table order)
+3. (only one per table)
+
+non-clustered:
+
+1. (non pk)
+2. does not decide table order
+3. many per tables
+
+if we have n non-clustered tables,deletion will take time because all the non clustered tables (n+1) must also be deleted
+
+drop index index_name on table_name
