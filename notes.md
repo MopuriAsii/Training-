@@ -1709,6 +1709,8 @@ exec spGetMoviesByGenre 'Action'
 
 exec sp_helptext GetMoviesByGenre -> descripbes the structure
 
+EXEC sp_rename 'HumanResources.uspGetAllEmployeesTest', 'uspEveryEmployeeTest';
+
 # MONGOdB:
 
 1.  GOOD AT READING AND RETRIVAL
@@ -1726,13 +1728,13 @@ to increase the reading spped we need to tune it by indexing.
 
 Exec sp_helpindex employess
 
-clustered :
+## clustered :
 
 1. (pk)
 2. (decides table order)
 3. (only one per table)
 
-non-clustered:
+## non-clustered:
 
 1. (non pk)
 2. does not decide table order
@@ -1741,3 +1743,31 @@ non-clustered:
 if we have n non-clustered tables,deletion will take time because all the non clustered tables (n+1) must also be deleted
 
 drop index index_name on table_name
+
+clustered determines the table order
+
+# unique vs non-unique index:
+
+if the column is unique and we apply index then it will become unique index
+
+# ACID PROPERTIES:
+
+1.  Atomicity :
+
+both the operations should be completed or both should be failed.
+
+2. Consistency:
+
+the changes should be reflected everywhere.
+
+it cannot have ghost data
+
+3. Isolation:
+
+lock only the rows that are affected(ticket booking)
+
+4. Durability:
+
+in case of failure we will do a roll back
+
+![alt text](<Screenshot (179).png>)
