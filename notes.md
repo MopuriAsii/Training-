@@ -1719,6 +1719,14 @@ EXEC sp_rename 'HumanResources.uspGetAllEmployeesTest', 'uspEveryEmployeeTest';
 
 ## indexing in sql:
 
+1. fast data retrival
+2. determines the order of the table
+
+execution plan is used to determine the speed
+sub tree cost is used to determine the speed
+
+if create more indexes, it will slow down insertion and deletion process by creating a more clustered tables.if we insert a record we have to insert the new row in all non clustered tables.
+
 it does the grouping(i.e.,spliting the data).  
 we have cluster index in our db by default.  
 cluster index are the table which are in ordered.
@@ -1734,6 +1742,9 @@ Exec sp_helpindex employess
 2. (decides table order)
 3. (only one per table)
 
+in cluster the data will be divided into groups
+if there is no order, it will serach each row called index scan.
+
 ## non-clustered:
 
 1. (non pk)
@@ -1741,6 +1752,8 @@ Exec sp_helpindex employess
 3. many per tables
 
 if we have n non-clustered tables,deletion will take time because all the non clustered tables (n+1) must also be deleted
+
+in non clustrered, reading spped is fast and insertion and deletion is slow
 
 drop index index_name on table_name
 
@@ -1754,9 +1767,15 @@ if the column is unique and we apply index then it will become unique index
 
 1.  Atomicity :
 
+talks about before the transaction.
+
 both the operations should be completed or both should be failed.
 
 2. Consistency:
+
+cannot have host data
+
+if we have removed from one table it should be added to another table
 
 the changes should be reflected everywhere.
 
@@ -1768,6 +1787,62 @@ lock only the rows that are affected(ticket booking)
 
 4. Durability:
 
+after the transaction.
+
 in case of failure we will do a roll back
 
 ![alt text](<Screenshot (179).png>)
+
+## isolation level->read committed(default)
+
+set transaction isolation level read uncommited
+
+## rollback:
+
+undo the action
+
+## commit:
+
+end the transactions.
+
+# GO:
+
+Batch set of SQL commands.
+
+error number starts from 50000
+
+# indexing:
+
+when we want to filter the frequently usd data then we index
+
+create index IX_Filtered_year
+on movies(title)
+where releaseYear - 2020
+
+exec sp_helpindex movies
+
+-----for performance checking
+
+alter index index_name on table_name disable;
+
+alter index index_name on table_name rebuild;
+
+---------rename
+
+exec sp_rename 'table_name.oldname' , 'newname'
+
+sp_rename -> proc,Tables,columns.
+
+# COALESCE:
+
+returns the first not null values
+
+select @@version as SQLServerVersion
+
+## user data types:
+
+create type phonenumberfrom varchar(15) not null
+
+## parse the xml document:
+
+EXEC sp_xml_preparedocument @xmlDoc output, @xmlData
